@@ -5,6 +5,8 @@ const db = require('../src/database')
 const app = express()
 
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+
 db.hasConection()
 
 app.use(routes)
