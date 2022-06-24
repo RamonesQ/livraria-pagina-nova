@@ -5,7 +5,6 @@ const BookController = {
         const newBook = await Books.create({
             ...req.body
         })
-
         return res.status(201).json(newBook)
     }
 }
