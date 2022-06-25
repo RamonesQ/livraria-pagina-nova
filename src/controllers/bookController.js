@@ -5,13 +5,14 @@ const imageFolder = "images/"
 const BookController = {
   async create(req, res) {
     const file = req.files[0];
-   const uploadPath = cloudinary.uplads(file.path, 'livraria')
+   const uploadPath = await cloudinary.uplads(file.path, 'livraria')
+
     const newBook = await Books.create({
       ...req.body,
-      image:  imageFolder + file.filename,
+
+    image:  uploadPath.imageUrl
     });
 
-    console.log(req.files[0]);
     return res.status(201).json(newBook);
   },
 };
